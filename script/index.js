@@ -9,10 +9,12 @@ const displaylessons = (lessons) => {
 
     for(let lesson of lessons){
 
+        console.log(lesson);
+
         const btndiv =document.createElement("div");
         btndiv.innerHTML = `
-        <button class="">
-        <i class="fa-solid fa-book-bookmark"></i>Lesson</button>`;
+        <button class="btn btn-outline btn-primary">
+        <i class="fa-solid fa-book-bookmark"></i>Lesson - ${lesson.level_no}</button>`;
 
         lessoncontainer.append(btndiv);
     }

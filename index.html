@@ -37,7 +37,7 @@
     <!-- Header Section -->
     <header class="w-full">
       <!-- Navbar section -->
-      <nav class="navbar w-full bg-blue-100 shadow-sm px-4">
+      <nav class="navbar w-full bg-blue-100 shadow-sm px-2 justify-between">
         
         <!-- Navbar Start (Mobile Menu + Logo) -->
         <div class="navbar-start gap-2 ">
@@ -83,9 +83,9 @@
           </div>
 
           <!-- Logo -->
-          <div class="btn btn-ghost text-xl flex items-center  gap-2 normal-case">
+          <div class="btn btn-ghost flex items-center gap-1 normal-case px-1 text-base md:text-xl">
             <img src="assets/logo.png" alt="Logo" class="h-8 w-auto" />
-            <span>English Janala</span>
+            <span class="truncate">English Janala</span>
           </div>
           
         </div>
@@ -106,8 +106,7 @@
       </nav>
     </header>
 
-    <section class="flex  gap-10 justify-between
-    items-center py-5 w-11/12 mx-auto">
+    <section class="flex flex-col md:flex-row gap-10 justify-between items-center py-5 w-11/12 mx-auto">
       <div class="content flex-1 text-center md:text-left">
         <h2 class="text-4xl font-bold mb-8"> <span class="text-[#00BCFF]">English</span> Is Easy
         </h2>
@@ -137,10 +136,10 @@
     </section>
 
     <section class="">
-      <h2 class="text-4xl font-bold mb-8 ">
+      <h2 class="text-4xl font-bold mb-8 text-center">
         <span class="text-[#00BCFF]">Let's </span>Learn Vocabularies</h2>
 
-        <div id="lesson-container">
+        <div id="lesson-container" class="flex gap-5 flex-wrap justify-center">
 
         </div>
     </section>

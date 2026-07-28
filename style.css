@@ -2,6 +2,11 @@
     font-family: "poppins", sans-serif;
 
 }
+body {
+  width: 100%;
+  overflow-x: hidden; /* Global safety catch */
+}
+
 
 .font-bangla{
     font-family:"hind-siliguri", sans-serif;
