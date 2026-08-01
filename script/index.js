@@ -3,6 +3,10 @@ const loadlesson = () =>{
     .then((res) => res.json())
     .then(json => displaylessons(json.data));
 }
+const loadlevelword=(id)=>{
+    const url = `https://openapi.programming-hero.com/api/level/${id}`;
+    console.log(url);
+};
 
 const displaylessons = (lessons) => {
     const lessoncontainer = document.getElementById("lesson-container");
@@ -13,7 +17,7 @@ const displaylessons = (lessons) => {
 
         const btndiv =document.createElement("div");
         btndiv.innerHTML = `
-        <button class="btn btn-outline btn-primary">
+        <button onclick="loadlevelword(${lesson.level_no})" class="btn btn-outline btn-primary">
         <i class="fa-solid fa-book-bookmark"></i>Lesson - ${lesson.level_no}</button>`;
 
         lessoncontainer.append(btndiv);
