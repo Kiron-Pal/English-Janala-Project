@@ -5,8 +5,28 @@ const loadlesson = () =>{
 }
 const loadlevelword=(id)=>{
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
-    console.log(url);
+    fetch(url)
+    .then(res=>res.json())
+    .then((data) => displaylevelword(data.data));
 };
+
+const displaylevelword=(words)=>{
+
+    const wordcontainer = document.getElementById("word-container");
+
+    wordcontainer.innerHTML="";
+
+    words.forEach(word=>{
+        console.log(word);
+
+        const card = document.createElement("div");
+        card.innerHTML=`<p>`
+
+        wordcontainer,append(card);
+    })
+
+
+}
 
 const displaylessons = (lessons) => {
     const lessoncontainer = document.getElementById("lesson-container");
