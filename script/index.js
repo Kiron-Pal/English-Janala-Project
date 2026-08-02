@@ -1,46 +1,52 @@
-const loadlesson = () =>{
-    fetch("https://openapi.programming-hero.com/api/levels/all")
+const loadlesson = () => {
+  fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
-    .then(json => displaylessons(json.data));
-}
-const loadlevelword=(id)=>{
-    const url = `https://openapi.programming-hero.com/api/level/${id}`;
-    fetch(url)
-    .then(res=>res.json())
+    .then((json) => displaylessons(json.data));
+};
+const loadlevelword = (id) => {
+  const url = `https://openapi.programming-hero.com/api/level/${id}`;
+  fetch(url)
+    .then((res) => res.json())
     .then((data) => displaylevelword(data.data));
 };
 
-const displaylevelword=(words)=>{
+const displaylevelword = (words) => {
+  const wordcontainer = document.getElementById("word-container");
 
-    const wordcontainer = document.getElementById("word-container");
+  wordcontainer.innerHTML = "";
 
-    wordcontainer.innerHTML="";
+  words.forEach((word) => {
+    console.log(word);
 
-    words.forEach(word=>{
-        console.log(word);
+    const card = document.createElement("div");
+    card.innerHTML = `      <div class="bg-white rounded-xl shadow-sm text-center py-10 px-10 space-y-5">
+        <h2 class="font-bold text-2xl">${word.word}</h2>
+        <p class="font-semibold">Meaning /Pronounciation</p>
+        <div class="text-2xl font-bold font-bangla text-[#18181B]">
+          "${word.meaning} / ${word.pronounciation}"
+        </div>
+        <div class="flex justify-between items-center">
+          <button class="bg-[#1A91FF20] hover:bg-[#1A91FF50] active:bg-[#1A91FF80] py-1 px-2 rounded-sm"><i class="fa-solid fa-circle-info"></i></button>
+          <button class="bg-[#1A91FF20] hover:bg-[#1A91FF50] active:bg-[#1A91FF80] py-1 px-2 rounded-sm"><i class="fa-solid fa-headphones"></i></button>
+        </div>
+      </div>`;
 
-        const card = document.createElement("div");
-        card.innerHTML=`<p>`
-
-        wordcontainer,append(card);
-    })
-
-
-}
+    wordcontainer.append(card);
+  });
+};
 
 const displaylessons = (lessons) => {
-    const lessoncontainer = document.getElementById("lesson-container");
+  const lessoncontainer = document.getElementById("lesson-container");
 
-    for(let lesson of lessons){
+  for (let lesson of lessons) {
+    console.log(lesson);
 
-        console.log(lesson);
-
-        const btndiv =document.createElement("div");
-        btndiv.innerHTML = `
+    const btndiv = document.createElement("div");
+    btndiv.innerHTML = `
         <button onclick="loadlevelword(${lesson.level_no})" class="btn btn-outline btn-primary">
         <i class="fa-solid fa-book-bookmark"></i>Lesson - ${lesson.level_no}</button>`;
 
-        lessoncontainer.append(btndiv);
-    }
-}
-loadlesson()
+    lessoncontainer.append(btndiv);
+  }
+};
+loadlesson();
