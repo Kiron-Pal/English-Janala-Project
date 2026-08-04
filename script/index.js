@@ -30,10 +30,10 @@ const displaylevelword = (words) => {
 
     const card = document.createElement("div");
     card.innerHTML = `      <div class="bg-white rounded-xl shadow-sm text-center py-10 px-10 space-y-5">
-        <h2 class="font-bold text-2xl">${word.word}</h2>
+        <h2 class="font-bold text-2xl">${word.word ? word.word : "Could not find any word"}</h2>
         <p class="font-semibold">Meaning /Pronounciation</p>
         <div class="text-2xl font-bold font-bangla text-[#18181B]">
-          "${word.meaning} / ${word.pronounciation}"
+          "${word.meaning ? word.meaning : "could not find any meaning"} / ${word.pronounciation ? word.pronounciation : "could not find any pronounciation"}"
         </div>
         <div class="flex justify-between items-center">
           <button class="bg-[#1A91FF20] hover:bg-[#1A91FF50] active:bg-[#1A91FF80] py-1 px-2 rounded-sm"><i class="fa-solid fa-circle-info"></i></button>
