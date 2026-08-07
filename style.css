@@ -11,3 +11,7 @@ body {
 .font-bangla{
     font-family:"hind-siliguri", sans-serif;
 }
+.active{
+    background-color: #422AD5;
+    color: white;
+}

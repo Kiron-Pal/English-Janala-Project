@@ -3,11 +3,26 @@ const loadlesson = () => {
     .then((res) => res.json())
     .then((json) => displaylessons(json.data));
 };
+
+const removeactive = () =>{
+  const lessonbtns = document.querySelectorAll(".lesson-btn");
+
+  lessonbtns.forEach((btn)=>btn.classList.remove("active"));
+}
+
 const loadlevelword = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displaylevelword(data.data));
+    .then((data) => {
+      removeactive();
+      
+      const clickedbtn = document.getElementById(`lesson-btn-${id}`)
+      clickedbtn.classList.add("active");
+      
+      displaylevelword(data.data)
+
+    });
 };
 
 const displaylevelword = (words) => {
@@ -26,8 +41,6 @@ const displaylevelword = (words) => {
   }
 
   words.forEach((word) => {
-    console.log(word);
-
     const card = document.createElement("div");
     card.innerHTML = `      <div class="bg-white rounded-xl shadow-sm text-center py-10 px-10 space-y-5">
         <h2 class="font-bold text-2xl">${word.word ? word.word : "Could not find any word"}</h2>
@@ -49,11 +62,9 @@ const displaylessons = (lessons) => {
   const lessoncontainer = document.getElementById("lesson-container");
 
   for (let lesson of lessons) {
-    console.log(lesson);
-
     const btndiv = document.createElement("div");
     btndiv.innerHTML = `
-        <button onclick="loadlevelword(${lesson.level_no})" class="btn btn-outline btn-primary">
+        <button id="lesson-btn-${lesson.level_no}" onclick="loadlevelword(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn">
         <i class="fa-solid fa-book-bookmark"></i>Lesson - ${lesson.level_no}</button>`;
 
     lessoncontainer.append(btndiv);
